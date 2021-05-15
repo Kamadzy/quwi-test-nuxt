@@ -16,7 +16,7 @@ export const actions = {
     console.log('nuxtServerInit')
   },
   login({commit}) {
-    commit('setToken', 'truetoken')
+    commit('setToken', 'trueToken')
   },
   logout({commit}) {
     commit('clearToken')
@@ -24,5 +24,5 @@ export const actions = {
 }
 
 export const getters = {
-  hasToken: s => !!s.token
+  hasToken: state => !!state.token
 }
