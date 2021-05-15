@@ -4,30 +4,30 @@
       name: 'project-edit',
       params: { name: project.name, id: project.id }
     }"
-    ><li class="li-item">
-      <p>{{ testProg }}</p>
-      <img :src="project.logo_url" alt="logo" class="project-img" />
-      <h3>{{ project.name }}</h3>
-      <p :style="styledStatus">
-        {{ this.project.is_active ? "Active" : "Inactive" }}
-      </p>
-      <div class="summury">
-        <ul class="summury-list">
-          <li class="summury-item">
-            <span class="status">time this week</span>
-            <span class="status-time">00:00:00</span>
-          </li>
-          <li class="summury-item">
-            <span class="status">time mounth</span>
-            <span class="status-time">00:00:00</span>
-          </li>
-          <li class="summury-item">
-            <span class="status">total</span>
-            <span class="status-time">00:00:00</span>
-          </li>
-        </ul>
-      </div>
-    </li>
+  ><li class="li-item">
+    <p>{{ testProg }}</p>
+    <img :src="project.logo_url" alt="logo" class="project-img" />
+    <h3>{{ project.name }}</h3>
+    <p :style="styledStatus">
+      {{ this.project.is_active ? "Active" : "Inactive" }}
+    </p>
+    <div class="summury">
+      <ul class="summury-list">
+        <li class="summury-item">
+          <span class="status">time this week</span>
+          <span class="status-time">00:00:00</span>
+        </li>
+        <li class="summury-item">
+          <span class="status">time mounth</span>
+          <span class="status-time">00:00:00</span>
+        </li>
+        <li class="summury-item">
+          <span class="status">total</span>
+          <span class="status-time">00:00:00</span>
+        </li>
+      </ul>
+    </div>
+  </li>
   </nuxt-link>
 </template>
 
