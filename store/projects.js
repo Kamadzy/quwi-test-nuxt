@@ -1,7 +1,5 @@
 export const state = () => ({
-    projects: [],
-    token: '',
-    user: ''
+    projects: []
 })
 
 export const mutations = {
@@ -9,13 +7,7 @@ export const mutations = {
         state.projects = projects;
     },
 
-    setAuth(state, {user, token}) {
-        state.user = user;
-        window.localStorage.setItem("token", token);
-        state.token = token;
-    },
-
-    editUser(state, {id, name}) {
+    editProject(state, {id, name}) {
         const updateItemId = state.projects.findIndex(
             project => project.id === id
         );
@@ -41,15 +33,7 @@ export const actions = {
                 }
             }
         );
-        commit("EDIT_PROJECT", {id, name});
-    },
-
-    async getLogin({commit}, {email, password}) {
-        const req = await this.$axios.post(`${process.env.BASE_URL}/auth/login`, {
-            email,
-            password
-        });
-        commit("SET_AUTH", req);
+        commit("editProject", {id, name});
     },
 
     async getProjects({commit}) {
@@ -60,10 +44,10 @@ export const actions = {
                     Authorization: `Bearer ${window.localStorage.getItem("token")}`
                 }
             });
-        commit('SET_PROJECTS', req);
+        commit('setProjects', req);
     }
 }
 
 export const getters = {
-    users: state => state.users
+    projects: state => state.projects
 }

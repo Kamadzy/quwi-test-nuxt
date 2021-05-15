@@ -2,12 +2,14 @@
     <div class="main-section">
         <p>Name</p>
         <form @submit.prevent="() => editProjectName()">
-            <input
-                class="new-input"
-                type="text"
-                v-model="newProjectTitle"
-                placeholder=""
-            />
+            <label>
+                <input
+                    class="new-input"
+                    type="text"
+                    v-model="title"
+                    placeholder=""
+                />
+            </label>
             <button class="new-btn">OK</button>
         </form>
     </div>
@@ -27,17 +29,17 @@ export default {
     },
     data() {
         return {
-            newProjectTitle: this.getProjectName()
+            title: this.getName()
         };
     },
     name: "ProjectEdit",
     methods: {
-        getProjectName() {
+        getName() {
             return this.name;
         },
         editProjectName() {
             this.$store.dispatch("editProject", {
-                name: this.newProjectTitle,
+                name: this.title,
                 id: this.id
             });
         }

@@ -1,39 +1,50 @@
 <template>
     <div class="main-login">
         <h3>Login</h3>
-        <input
-            class="input-form email-input"
-            type="text"
-            placeholder="Email"
-            v-model="email"
-        />
-        <input
-            class="input-form psw-input"
-            type="password"
-            placeholder="Password"
-            v-model="password"
-        />
-        <button class="submit-btn" type="submit" @click="onLogin">
-            <!-- <router-link to="/">Login</router-link> -->Login
-        </button>
+        <form @submit.prevent="onSubmit">
+            <label>
+                <input
+                    class="input-form email-input"
+                    type="text"
+                    placeholder="Email"
+                    v-model="email"
+                />
+            </label>
+            <label>
+                <input
+                    class="input-form psw-input"
+                    type="password"
+                    placeholder="Password"
+                    v-model="password"
+                />
+            </label>
+            <button
+                class="submit-btn"
+                type="submit"
+            />
+        </form>
     </div>
 </template>
 
 <script>
 export default {
-    name: "Login",
+    layout: 'empty',
+    name: 'Login',
+
     data() {
         return {
-            email: "",
-            password: ""
+            email: '',
+            password: ''
         };
     },
+
     methods: {
-        onLogin() {
-            this.$store.dispatch("getLogin", {
+        onSubmit() {
+            this.$store.dispatch('login', {
                 email: this.email,
                 password: this.password
-            });
+            })
+            this.$router.push('/')
         }
     }
 };

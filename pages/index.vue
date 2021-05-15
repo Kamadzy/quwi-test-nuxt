@@ -1,18 +1,11 @@
 <template>
     <div>
-        <ProjectsList/>
-        <!-- <h1>123</h1> -->
+        <h1>Hello world</h1>
     </div>
 </template>
 
 <script>
-import ProjectsList from "@/components/ProjectsList";
-
-export default {
-    components: {
-        ProjectsList
-    }
-};
+    export default {
+        //
+    };
 </script>
-
-<style></style>
