@@ -11,15 +11,17 @@ export default {
         ],
         link: [{rel: "icon", type: "image/x-icon", href: "/favicon.ico"}]
     },
-    env: {
-        baseUrl: process.env.BASE_URL || 'https://api.quwi.com/v2'
-    },
     css: ["@/assets/css/global.css"],
     plugins: [],
     components: true,
     buildModules: [
         '@nuxtjs/dotenv'
     ],
+    publicRuntimeConfig: {
+        axios: {
+            baseURL: 'https://api.quwi.com/v2'
+        }
+    },
     modules: [
         "@nuxtjs/axios"
     ],

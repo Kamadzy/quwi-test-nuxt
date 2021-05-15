@@ -43,8 +43,8 @@ export default {
             this.$store.dispatch('login', {
                 email: this.email,
                 password: this.password
-            })
-            this.$router.push('/')
+            });
+            this.$router.push('/');
         }
     }
 };

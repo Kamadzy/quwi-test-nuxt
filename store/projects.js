@@ -22,8 +22,8 @@ export const mutations = {
 
 export const actions = {
     async editProject({commit}, {id, name}) {
-        await this.$axios.post(
-            `${process.env.BASE_URL}/projects-manage/update?id=1690`,
+        const {data} = await this.$axios.post(
+            `${process.env.BASE_URL}/projects-manage/update?id=${id}`,
             {
                 name
             },
@@ -33,18 +33,18 @@ export const actions = {
                 }
             }
         );
-        commit("editProject", {id, name});
+        commit('editProject', data);
     },
 
     async getProjects({commit}) {
-        const req = await this.$axios.get(
+        const {data} = await this.$axios.get(
             `${process.env.BASE_URL}/projects-manage/index`,
             {
                 headers: {
                     Authorization: `Bearer ${window.localStorage.getItem("token")}`
                 }
             });
-        commit('setProjects', req);
+        commit('setProjects', data);
     }
 }
 

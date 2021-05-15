@@ -19,16 +19,14 @@ export const mutations = {
 
 export const actions = {
     async login({commit}, {email, password}) {
-        const req = await this.$axios.post(`${process.env.BASE_URL}/auth/login`, {
-            email,
-            password
-        });
+        const req = await this.$axios.$post('/auth/login', {email, password});
+
         commit("setAuth", req);
         commit('setToken', 'trueToken')
     },
 
     nuxtServerInit({dispatch}) {
-        console.log('nuxtServerInit')
+        console.log('nuxtServerInit');
     },
 
     logout({commit}) {
