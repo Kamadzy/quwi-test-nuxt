@@ -1,16 +1,38 @@
 <template>
     <div class="main-navbar">
-        <nuxt-link exact active-class="active" class="nav-link" to="/">
+        <nuxt-link
+            exact
+            active-class="active"
+            class="nav-link"
+            to="/projects"
+        >
             Projects
         </nuxt-link>
-        <nuxt-link active-class="active" class="nav-link" to="/login">
+        <nuxt-link
+            @click.prevent="logout"
+            active-class="active"
+            class="nav-link"
+            to="/login"
+        >
             Logout
         </nuxt-link>
     </div>
 </template>
 
 <script>
-export default {};
+export default {
+    computed: {
+        hasToken() {
+            return this.$store.getters['auth/hasToken']
+        }
+    },
+    methods: {
+        logout() {
+            this.$store.dispatch('auth/logout')
+            this.$router.push('/login')
+        }
+    }
+};
 </script>
 
 <style scoped>

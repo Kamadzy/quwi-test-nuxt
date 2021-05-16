@@ -39,12 +39,11 @@ export default {
     },
 
     methods: {
-        onSubmit() {
-            this.$store.dispatch('login', {
+        async onSubmit() {
+            await this.$store.dispatch('auth/login', {
                 email: this.email,
                 password: this.password
             });
-            this.$router.push('/');
         }
     }
 };

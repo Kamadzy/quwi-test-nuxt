@@ -7,11 +7,11 @@ export const mutations = {
         state.projects = projects;
     },
 
-    editProject(state, {id, name}) {
+    editProject(state, {id, ...rest}) {
         const updateItemId = state.projects.findIndex(
             project => project.id === id
         );
-        const item = {...state.projects[updateItemId], name};
+        const item = {...state.projects[updateItemId], ...rest};
         state.projects = [
             ...state.projects.slice(0, updateItemId),
             item,
@@ -22,29 +22,16 @@ export const mutations = {
 
 export const actions = {
     async editProject({commit}, {id, name}) {
-        const {data} = await this.$axios.post(
+        const updatedProject = await this.$axios.post(
             `${process.env.BASE_URL}/projects-manage/update?id=${id}`,
-            {
-                name
-            },
-            {
-                headers: {
-                    Authorization: `Bearer ${window.localStorage.getItem("token")}`
-                }
-            }
+            {name}
         );
-        commit('editProject', data);
+        commit('editProject', updatedProject);
     },
 
     async getProjects({commit}) {
-        const {data} = await this.$axios.get(
-            `${process.env.BASE_URL}/projects-manage/index`,
-            {
-                headers: {
-                    Authorization: `Bearer ${window.localStorage.getItem("token")}`
-                }
-            });
-        commit('setProjects', data);
+        const projects = await this.$axios.get(`${process.env.BASE_URL}/projects-manage/index`);
+        commit('setProjects', projects);
     }
 }
 

@@ -4,6 +4,12 @@
     </div>
 </template>
 
+<script>
+    export default {
+        name: 'empty'
+    };
+</script>
+
 <style scoped>
 .empty-layout {
     display: flex;
